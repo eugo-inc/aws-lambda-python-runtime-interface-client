@@ -32,7 +32,7 @@ py.extension_module(
     ['awslambdaric/runtime_client.cpp'],
 
     install: true,
-    subdir: 'awslambdaric/',
+    # subdir: 'awslambdaric/', # They install that into site_packages root, that is really prone to collisions with other packages as `runtime_client` is quite common noun.
     dependencies: [
         # Eugo-managed
         libcurl,
