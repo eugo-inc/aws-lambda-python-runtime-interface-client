@@ -1,20 +1,24 @@
 [build-system]
 build-backend = 'mesonpy'
-
 requires = [
     'meson',
-    'meson-python'
+    'meson_python'
 ]
 
 
 [project]
 name = 'awslambdaric'
-version = '3.0.0.dev0'
+dynamic = ["version"]
 readme = 'README.md'
 requires-python = '>=3.6'
 license = {file = 'LICENSE'}
-author = 'Amazon Web Services'
+authors = [
+    {name = "Eugo, Inc."},
+    {name = "Amazon Web Services"},
+]
+
 description = 'AWS Lambda Runtime Interface Client for Python'
+
 
 classifiers=[
     'Development Status :: 5 - Production/Stable',
