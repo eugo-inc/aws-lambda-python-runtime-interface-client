@@ -79,3 +79,9 @@ protomolecule pins this repo by commit sha. The sha you pin MUST already be
 pushed to `github.com/eugo-inc/aws-lambda-python-runtime-interface-client`
 `main` - never pin a local-only sha, and never force-push/rewrite `main`, or
 every consumer build breaks on fetch.
+
+## Related skills
+
+`eugo-build-and-test` (container build + wheel smoke), `eugo-rebuild` (what a
+diff requires + pin-bump rules), `eugo-meson-build-review` (pre-commit
+meson.build / pyproject.toml checklist).
