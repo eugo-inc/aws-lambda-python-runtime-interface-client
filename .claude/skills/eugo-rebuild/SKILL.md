@@ -26,9 +26,9 @@ Build and smoke commands live in the `eugo-build-and-test` skill.
 ## When protomolecule must rebuild / pin-bump
 
 `protomolecule/dependencies/python/wave_4/awslambdaric/meta.json` pins this repo
-by `version.commit` on branch `main`. Consequences:
+by `version.commit` on branch `eugo-main`. Consequences:
 
-- Landing ANYTHING on `main` changes nothing downstream until that commit sha
+- Landing ANYTHING on `eugo-main` changes nothing downstream until that commit sha
   is bumped. Merge/adopt are decoupled - use this deliberately.
 - Every adoption is a pin bump; there is no "partial" rebuild downstream. The
   harness reruns the whole `setup` pip install at the new commit.
@@ -38,7 +38,7 @@ by `version.commit` on branch `main`. Consequences:
   dependencies` updated with the pin bump.
 - New native link deps in meson.build need `meta.json
   dependencies.buildtime.standalone` updated, or the DAG never builds them.
-- Only pin shas already pushed to `eugo-inc/...-interface-client` `main`;
-  never force-push `main` (breaks every consumer fetch).
+- Only pin shas already pushed to `eugo-inc/...-interface-client` `eugo-main`;
+  never force-push `eugo-main` (breaks every consumer fetch).
 - If entrypoint-relevant behavior changed (`__main__.py`, `bootstrap.py`),
   re-test an epstein-drive lambda base image boot after the bump.

@@ -24,7 +24,7 @@ sed-extracted from `__version__` in `awslambdaric/__init__.py` (see meson.build)
 ## How protomolecule builds it (ground truth)
 
 `protomolecule/dependencies/python/wave_4/awslambdaric/` - `meta.json` pins this
-repo by git commit on branch `main`; `setup` is a single pip install:
+repo by git commit on branch `eugo-main`; `setup` is a single pip install:
 
 ```bash
 pip3 install "${EUGO_PACKAGE_NAME} @ ${EUGO_PACKAGE_VERSION}" \
@@ -68,8 +68,11 @@ pip3 wheel . --no-build-isolation --no-deps --no-binary :all: \
 - Smoke (run from /tmp so the repo dir does not shadow the install):
   `python3 -c "import awslambdaric, awslambdaric.runtime_client"` - loading the
   .so proves the libcurl + libaws-lambda-runtime DT_NEEDED chain resolves.
-- Upstream pure-Python unit tests still pass: `make init && make test`
-  (pytest over `tests/`; does not exercise the meson extension).
+- Upstream pure-Python unit tests still pass:
+  `python3 -m pytest --cov awslambdaric --cov-fail-under 90 tests`
+  (does not exercise the meson extension). NEVER `make test` /
+  `make format` / `make build` - the Makefile targets still reference
+  the deleted `setup.py` and fail; call pytest/black directly.
 
 ## Known traps
 

@@ -26,11 +26,9 @@ Deep content lives in `.claude/skills/`. Route by what you are about to do:
 
 ## Ground rules
 
-- Default branch is `eugo-main` (`origin/HEAD`). The skills still say
-  canonical branch `main` (predates a rename) and `eugo-build-and-test`
-  still recommends `make init && make test` (hits the deleted-setup.py trap
-  below) -> trust `git branch --show-current` and this file's test commands
-  over the skills where they disagree.
+- Default branch is `eugo-main` (`origin/HEAD`); protomolecule's meta.json
+  pins this repo by commit on it. When any doc disagrees with git -> trust
+  `git branch --show-current`.
 - NO `@EUGO_CHANGE` annotations here -> `meson.build` is wholly eugo-authored
   and organized by `# === @begin/@end: <section> ===` blocks; keep new logic
   inside a paired block.
